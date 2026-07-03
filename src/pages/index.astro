@@ -75,7 +75,7 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 		</section>
 
-		<section id="soluciones" class="py-24 bg-brand-secondary text-white overflow-hidden relative">
+		<section id="soluciones" class="py-24 bg-gradient-to-b from-brand-secondary to-brand-dark text-white overflow-hidden relative">
 			<div class="absolute inset-0 opacity-10 bg-[url('/bento-ftl.jpg')] bg-cover bg-fixed bg-center pointer-events-none"></div>
 			<div class="max-w-7xl mx-auto px-6 relative z-10">
 				<div class="mb-16">
@@ -161,45 +161,49 @@ import Layout from '../layouts/Layout.astro';
 					</div>
 					
 					<div class="md:col-span-7 p-8 md:p-12">
-						<form class="space-y-4">
+						<form id="leadForm" class="space-y-4">
 							<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 								<div>
 									<label class="block text-xs font-bold uppercase tracking-wider text-brand-secondary mb-1">Nombre</label>
-									<input type="text" required class="w-full border border-black/10 rounded p-2.5 text-sm focus:outline-none focus:border-brand-primary bg-brand-light" />
+									<input type="text" name="nombre" required class="w-full border border-black/10 rounded p-2.5 text-sm focus:outline-none focus:border-brand-primary bg-brand-light" />
 								</div>
 								<div>
 									<label class="block text-xs font-bold uppercase tracking-wider text-brand-secondary mb-1">Empresa</label>
-									<input type="text" required class="w-full border border-black/10 rounded p-2.5 text-sm focus:outline-none focus:border-brand-primary bg-brand-light" />
+									<input type="text" name="empresa" required class="w-full border border-black/10 rounded p-2.5 text-sm focus:outline-none focus:border-brand-primary bg-brand-light" />
 								</div>
 							</div>
 							<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 								<div>
 									<label class="block text-xs font-bold uppercase tracking-wider text-brand-secondary mb-1">Correo Corporativo</label>
-									<input type="email" required class="w-full border border-black/10 rounded p-2.5 text-sm focus:outline-none focus:border-brand-primary bg-brand-light" />
+									<input type="email" name="correo" required class="w-full border border-black/10 rounded p-2.5 text-sm focus:outline-none focus:border-brand-primary bg-brand-light" />
 								</div>
 								<div>
 									<label class="block text-xs font-bold uppercase tracking-wider text-brand-secondary mb-1">Teléfono</label>
-									<input type="tel" required class="w-full border border-black/10 rounded p-2.5 text-sm focus:outline-none focus:border-brand-primary bg-brand-light" />
+									<input type="tel" name="telefono" required pattern="[0-9]{10}" placeholder="10 dígitos" class="w-full border border-black/10 rounded p-2.5 text-sm focus:outline-none focus:border-brand-primary bg-brand-light" />
 								</div>
 							</div>
 							<div>
 								<label class="block text-xs font-bold uppercase tracking-wider text-brand-secondary mb-1">Tipo de Unidad Requerida</label>
-								<select class="w-full border border-black/10 rounded p-2.5 text-sm focus:outline-none focus:border-brand-primary bg-brand-light">
-									<option>Nissan / Pick-up</option>
-									<option>3.5 Toneladas (Plataforma/Caja)</option>
-									<option>Rabón (26')</option>
-									<option>Caja Seca 53’ / Plataforma</option>
-									<option>Refrigerado 53’</option>
-									<option>Otro / No estoy seguro</option>
+								<select name="unidad" class="w-full border border-black/10 rounded p-2.5 text-sm focus:outline-none focus:border-brand-primary bg-brand-light">
+									<option value="Nissan / Pick-up">Nissan / Pick-up</option>
+									<option value="3.5 Toneladas (Plataforma/Caja)">3.5 Toneladas (Plataforma/Caja)</option>
+									<option value="Rabón (26')">Rabón (26')</option>
+									<option value="Caja Seca 53’ / Plataforma">Caja Seca 53’ / Plataforma</option>
+									<option value="Refrigerado 53’">Refrigerado 53’</option>
+									<option value="Otro / No estoy seguro">Otro / No estoy seguro</option>
 								</select>
 							</div>
 							<div>
 								<label class="block text-xs font-bold uppercase tracking-wider text-brand-secondary mb-1">Ruta (Origen/Destino)</label>
-								<input type="text" placeholder="Ej. Santa Catarina NL a Laredo TX" class="w-full border border-black/10 rounded p-2.5 text-sm focus:outline-none focus:border-brand-primary bg-brand-light" />
+								<input type="text" name="ruta" placeholder="Ej. Santa Catarina NL a Laredo TX" class="w-full border border-black/10 rounded p-2.5 text-sm focus:outline-none focus:border-brand-primary bg-brand-light" />
 							</div>
-							<button type="submit" class="w-full bg-brand-primary hover:bg-red-700 text-white font-bold py-3.5 rounded transition-colors uppercase tracking-wider text-sm shadow-lg shadow-brand-primary/20">
-								Cotizar Ahora
+							
+							<button type="submit" id="submitBtn" class="w-full bg-brand-primary hover:bg-red-700 text-white font-bold py-3.5 rounded transition-all uppercase tracking-wider text-sm shadow-lg shadow-brand-primary/20 flex justify-center items-center gap-2">
+								<span id="btnText">Cotizar Ahora</span>
+								<div id="btnSpinner" class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
 							</button>
+							
+							<p id="formFeedback" class="hidden text-center text-sm font-semibold mt-2"></p>
 						</form>
 					</div>
 				</div>
@@ -263,8 +267,71 @@ import Layout from '../layouts/Layout.astro';
 				ease: 'power2.out'
 			});
 			*/
+			
+			// Revelado de la sección de contacto
+			gsap.from('#cotizar .max-w-6xl', {
+				scrollTrigger: {
+					trigger: '#cotizar',
+					start: 'top 80%'
+				},
+				opacity: 0,
+				y: 50,
+				duration: 0.8,
+				ease: 'power3.out'
+			});
 		} else {
 			console.error("GSAP or ScrollTrigger not loaded");
 		}
+	</script>
+	<script is:inline>
+	  document.addEventListener('DOMContentLoaded', () => {
+	    const form = document.getElementById('leadForm');
+	    const submitBtn = document.getElementById('submitBtn');
+	    const btnText = document.getElementById('btnText');
+	    const btnSpinner = document.getElementById('btnSpinner');
+	    const feedback = document.getElementById('formFeedback');
+
+	    if (form) {
+	      form.addEventListener('submit', async (e) => {
+	        e.preventDefault();
+	        
+	        // Bloquear botón y mostrar spinner (Fricción Cero UX)
+	        submitBtn.disabled = true;
+	        btnText.textContent = 'Enviando...';
+	        btnSpinner.classList.remove('hidden');
+	        feedback.classList.add('hidden');
+
+	        const formData = new FormData(form);
+
+	        try {
+	          const response = await fetch('/api/cotizar', {
+	            method: 'POST',
+	            body: formData,
+	          });
+
+	          const result = await response.json();
+
+	          feedback.classList.remove('hidden');
+	          if (response.ok) {
+	            feedback.className = "text-center text-sm font-semibold mt-4 text-green-600 bg-green-50 p-3 rounded border border-green-200";
+	            feedback.textContent = "¡Cotización enviada con éxito! Nos comunicaremos de inmediato.";
+	            form.reset();
+	          } else {
+	            feedback.className = "text-center text-sm font-semibold mt-4 text-red-600 bg-red-50 p-3 rounded border border-red-200";
+	            feedback.textContent = result.message || "Hubo un error. Inténtalo de nuevo.";
+	          }
+	        } catch (error) {
+	          feedback.classList.remove('hidden');
+	          feedback.className = "text-center text-sm font-semibold mt-4 text-red-600 bg-red-50 p-3 rounded border border-red-200";
+	          feedback.textContent = "Error de conexión. Revisa tu internet o intenta más tarde.";
+	        } finally {
+	          // Desbloquear botón
+	          submitBtn.disabled = false;
+	          btnText.textContent = 'Cotizar Ahora';
+	          btnSpinner.classList.add('hidden');
+	        }
+	      });
+	    }
+	  });
 	</script>
 </Layout>
