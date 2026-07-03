@@ -20,10 +20,15 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
+    // Soporte para múltiples correos separados por comas
+    const destinatarios = import.meta.env.PREFERED_RECEIVER_EMAIL
+      .split(',')
+      .map((correo: string) => ({ email: correo.trim(), name: "Ventas MAFRA" }));
+
     // Configuración de la petición a la API de Brevo (v3)
     const brevoPayload = {
       sender: { name: "MAFRA LP Lead", email: "noreply@futurite.info" },
-      to: [{ email: import.meta.env.PREFERED_RECEIVER_EMAIL, name: "Ventas MAFRA" }],
+      to: destinatarios,
       subject: `Nueva Cotización Industrial: ${empresa}`,
       htmlContent: `
         <h3>Información del Lead de Logística</h3>
