@@ -12,7 +12,7 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Respondemos a tus fletes urgentes en Nuevo León con flota propia. Disponibilidad inmediata 24/7." />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
 		<title>{title}</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,6 +33,18 @@ const { title } = Astro.props;
 					<a href="#soluciones" class="hover:text-brand-primary transition-colors">Soluciones de Carga</a>
 					<a href="#cotizar" class="hover:text-brand-primary transition-colors">Cotizar</a>
 				</nav>
+				
+				<!-- Mobile Menu Toggle -->
+				<button id="mobile-menu-btn" class="md:hidden text-brand-dark p-2 focus:outline-none">
+					<i class="ph ph-list text-3xl" id="mobile-menu-icon"></i>
+				</button>
+			</div>
+
+			<!-- Mobile Menu Dropdown -->
+			<div id="mobile-menu" class="absolute top-full left-0 w-full bg-white border-b border-black/10 shadow-xl hidden flex-col py-6 px-6 gap-6 md:hidden">
+				<a href="#por-que-elegirnos" class="mobile-link text-lg font-semibold text-brand-secondary">Beneficios</a>
+				<a href="#soluciones" class="mobile-link text-lg font-semibold text-brand-secondary">Soluciones de Carga</a>
+				<a href="#cotizar" class="mobile-link text-lg font-semibold text-brand-primary">Cotizar</a>
 			</div>
 		</header>
 
@@ -65,23 +77,49 @@ const { title } = Astro.props;
 			</div>
 		</footer>
 
-		<!-- Chatbot Script -->
-		<script is:inline src="https://conversia.com.mx/assets/js/chatbot.js" id="chatbot-js"></script>
+		<!-- Chatbot Aislado (Evita colisión de CSS) -->
+		<iframe id="chatbot-iframe" src="/chatbot.html" title="Chatbot" style="position: fixed; bottom: 0; right: 0; width: 120px; height: 120px; border: none; z-index: 999999; background: transparent; transition: all 0.3s ease;"></iframe>
 		<script is:inline>
-			if (typeof CHATKODEX !== 'undefined') {
-				CHATKODEX.init({
-					host: window.location.host,
-					key: "roHNZFsyBmLw3"
-				});
-			} else {
-				// Fallback si el script carga asincronamente o tarde
-				window.addEventListener('load', function() {
-					if (typeof CHATKODEX !== 'undefined') {
-						CHATKODEX.init({
-							host: window.location.host,
-							key: "roHNZFsyBmLw3"
-						});
+			window.addEventListener('message', function(e) {
+				const iframe = document.getElementById('chatbot-iframe');
+				if (!iframe) return;
+				
+				if (e.data === 'chat_open') {
+					iframe.style.width = '100vw';
+					iframe.style.height = '100vh';
+				} else if (e.data === 'chat_closed') {
+					iframe.style.width = '120px';
+					iframe.style.height = '120px';
+				}
+			});
+
+			// Script para el menú móvil
+			const btn = document.getElementById('mobile-menu-btn');
+			const menu = document.getElementById('mobile-menu');
+			const icon = document.getElementById('mobile-menu-icon');
+			const links = document.querySelectorAll('.mobile-link');
+
+			if (btn && menu && icon) {
+				btn.addEventListener('click', () => {
+					menu.classList.toggle('hidden');
+					menu.classList.toggle('flex');
+					if (menu.classList.contains('hidden')) {
+						icon.classList.remove('ph-x');
+						icon.classList.add('ph-list');
+					} else {
+						icon.classList.remove('ph-list');
+						icon.classList.add('ph-x');
 					}
+				});
+
+				// Cerrar menú al hacer clic en un enlace
+				links.forEach(link => {
+					link.addEventListener('click', () => {
+						menu.classList.add('hidden');
+						menu.classList.remove('flex');
+						icon.classList.remove('ph-x');
+						icon.classList.add('ph-list');
+					});
 				});
 			}
 		</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot Kodex</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: transparent !important;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://conversia.com.mx/assets/js/chatbot.js" id="chatbot-js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            if (typeof CHATKODEX !== 'undefined') {
+                CHATKODEX.init({
+                    host: window.location.host,
+                    key: "roHNZFsyBmLw3"
+                });
+            }
+        });
+
+        // Monitor for chat open/close to resize iframe
+        setInterval(() => {
+            const isChatOpen = document.body.classList.contains('show-chatbot') || 
+                               document.body.classList.contains('show-whatsapp');
+            
+            if (isChatOpen) {
+                window.parent.postMessage('chat_open', '*');
+            } else {
+                window.parent.postMessage('chat_closed', '*');
+            }
+        }, 200);
+    </script>
+</body>
+</html>
