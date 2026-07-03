@@ -65,5 +65,25 @@ const { title } = Astro.props;
 			</div>
 		</footer>
 
+		<!-- Chatbot Script -->
+		<script is:inline src="https://conversia.com.mx/assets/js/chatbot.js" id="chatbot-js"></script>
+		<script is:inline>
+			if (typeof CHATKODEX !== 'undefined') {
+				CHATKODEX.init({
+					host: window.location.host,
+					key: "roHNZFsyBmLw3"
+				});
+			} else {
+				// Fallback si el script carga asincronamente o tarde
+				window.addEventListener('load', function() {
+					if (typeof CHATKODEX !== 'undefined') {
+						CHATKODEX.init({
+							host: window.location.host,
+							key: "roHNZFsyBmLw3"
+						});
+					}
+				});
+			}
+		</script>
 	</body>
 </html>
