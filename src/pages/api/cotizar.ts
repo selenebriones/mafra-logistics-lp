@@ -10,6 +10,7 @@ export const POST: APIRoute = async ({ request }) => {
     const correo = data.get('correo')?.toString();
     const telefono = data.get('telefono')?.toString();
     const unidad = data.get('unidad')?.toString();
+    const mercancia = data.get('mercancia')?.toString();
     const ruta = data.get('ruta')?.toString();
 
     // Validaciones básicas del lado del servidor
@@ -37,6 +38,7 @@ export const POST: APIRoute = async ({ request }) => {
         <p><strong>Correo:</strong> ${correo}</p>
         <p><strong>Teléfono:</strong> ${telefono}</p>
         <p><strong>Tipo de Unidad:</strong> ${unidad}</p>
+        <p><strong>Mercancía a transportar:</strong> ${mercancia || 'No especificada'}</p>
         <p><strong>Ruta solicitada:</strong> ${ruta || 'No especificada'}</p>
       `
     };
