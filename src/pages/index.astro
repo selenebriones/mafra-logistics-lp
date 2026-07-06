@@ -17,10 +17,10 @@ import Layout from '../layouts/Layout.astro';
 						<span class="w-2 h-2 rounded-full bg-brand-primary animate-pulse"></span> Disponibilidad Inmediata 24/7
 					</span>
 					<h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-none">
-						Transporte de Carga Industrial Nuevo León
+						Transporte de Carga Industrial en Nuevo León
 					</h1>
 					<p class="text-lg md:text-xl text-brand-text max-w-2xl mb-8 leading-relaxed">
-						Respondemos a tus fletes urgentes en Nuevo León con <strong class="text-white">flota propia</strong>. Disponibilidad inmediata de unidades Nissan, 3.5 toneladas y trailers para proteger tu línea de producción.
+						Ofrecemos un servicio de fletes de carga confiable para atender tus envíos urgentes en Nuevo León con flota propia. Contamos con disponibilidad inmediata de unidades Nissan, 3.5 toneladas y fletes de trailer para proteger tu línea de producción.
 					</p>
 					<div class="flex flex-col sm:flex-row gap-4">
 						<a href="#cotizar" class="bg-brand-primary hover:bg-red-700 text-white font-bold px-8 py-4 rounded-md text-center transition-all duration-300 shadow-xl shadow-brand-primary/30">
@@ -47,7 +47,7 @@ import Layout from '../layouts/Layout.astro';
 						</div>
 						<h3 class="text-xl font-bold mb-4 text-brand-dark">Sin Intermediarios</h3>
 						<p class="text-brand-secondary text-sm leading-relaxed">
-							Oficinas en San Nicolás y salidas de transporte en Escobedo. No somos un bróker tradicional; garantizamos el <strong class="text-brand-dark">control total y la seguridad</strong> de tu mercancía.
+							Oficinas en San Nicolás y salidas de transporte desde Escobedo. No somos un bróker tradicional; garantizamos el <strong class="text-brand-dark">control total y la seguridad</strong> de tu mercancía.
 						</p>
 					</div>
 					<div class="benefit-card bg-brand-light p-8 rounded-xl border border-black/5 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
@@ -56,7 +56,7 @@ import Layout from '../layouts/Layout.astro';
 						</div>
 						<h3 class="text-xl font-bold mb-4 text-brand-dark">Puntualidad</h3>
 						<p class="text-brand-secondary text-sm leading-relaxed">
-							Cobertura estratégica y despachos inmediatos en los principales puntos industriales de Nuevo León. Llegamos a tiempo para mantener tu planta activa.
+							Cobertura estratégica y despachos inmediatos hacia los principales puntos industriales de Nuevo León.
 						</p>
 					</div>
 					<div class="benefit-card bg-brand-light p-8 rounded-xl border border-black/5 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
@@ -83,55 +83,66 @@ import Layout from '../layouts/Layout.astro';
 				</div>
 
 				<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-					<div class="bento-item lg:col-span-7 glass-card p-8 md:p-12 rounded-2xl flex flex-col justify-between relative overflow-hidden min-h-[320px]">
-						<div class="relative z-10 max-w-md">
-							<span class="text-xs font-bold text-brand-primary tracking-widest uppercase block mb-2">Servicio Premium</span>
-							<h3 class="text-2xl md:text-3xl font-extrabold mb-4">Carga Dedicada (FTL)</h3>
-							<p class="text-white/90 text-sm leading-relaxed">
-								Asignación de unidades dedicadas siempre disponibles bajo contrato para operaciones corporativas complejas que trabajan las 24 horas del día.
+					<!-- Top Area: Servicio Principal -->
+					<div class="bento-item lg:col-span-12 glass-card p-8 md:p-12 rounded-2xl flex flex-col justify-between relative overflow-hidden">
+						<div class="relative z-10 w-full">
+							<span class="text-xs font-bold text-brand-primary tracking-widest uppercase block mb-2">Nuestro Servicio Principal</span>
+							<h3 class="text-2xl md:text-3xl font-extrabold mb-4">Servicio de fletes de carga por viaje</h3>
+							<p class="text-white/90 text-sm md:text-base leading-relaxed mb-8 max-w-3xl">
+								Nos llamas, confirmamos disponibilidad y asignamos la unidad. Movemos tu carga con cobro por viaje, sin contratos ni compromisos. Ideal para operaciones regulares, urgencias y flete dedicado.
 							</p>
-						</div>
-						<div class="mt-8 relative z-10">
-							<a href="#cotizar" class="text-sm font-bold text-white flex items-center gap-2 hover:text-brand-primary transition-colors">
-								Solicitar contrato dedicado <i class="ph ph-arrow-right"></i>
-							</a>
+							
+							<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+								<div class="flex items-center gap-3 text-sm md:text-base font-semibold bg-white/5 p-4 rounded-lg border border-white/10 hover:bg-white/10 transition-colors">
+									<i class="ph-fill ph-warning-circle text-2xl text-brand-primary"></i> Urgencias y hotshots
+								</div>
+								<div class="flex items-center gap-3 text-sm md:text-base font-semibold bg-white/5 p-4 rounded-lg border border-white/10 hover:bg-white/10 transition-colors">
+									<i class="ph-fill ph-truck text-2xl text-brand-primary"></i> Unidades 1½ y 3½ ton
+								</div>
+								<div class="flex items-center gap-3 text-sm md:text-base font-semibold bg-white/5 p-4 rounded-lg border border-white/10 hover:bg-white/10 transition-colors">
+									<i class="ph-fill ph-map-pin text-2xl text-brand-primary"></i> Monterrey y zona metropolitana
+								</div>
+							</div>
+
+							<div class="mt-4 relative z-10">
+								<a href="#cotizar" class="inline-block bg-brand-primary hover:bg-red-700 text-white font-bold px-8 py-4 rounded-md text-center transition-all duration-300 shadow-lg shadow-brand-primary/30">
+									Solicitar Unidad
+								</a>
+							</div>
 						</div>
 					</div>
 
-					<div class="bento-item lg:col-span-5 bg-brand-dark p-8 rounded-2xl border border-white/5 flex flex-col justify-between min-h-[320px]">
-						<div>
-							<div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center mb-6 text-brand-primary text-xl">
-								<i class="ph ph-globe-hemisphere-west"></i>
-							</div>
-							<h3 class="text-xl font-bold mb-3">Forwarder (Corredor)</h3>
-							<ul class="space-y-3 text-sm text-white/90">
-								<li class="flex items-start gap-2"><i class="ph ph-check text-brand-primary mt-1"></i> Propietarios de unidades y equipos para satisfacer rápidamente los cambios de nuestros clientes.</li>
-								<li class="flex items-start gap-2"><i class="ph ph-check text-brand-primary mt-1"></i> Amplia red de socios de transporte en México y Estados Unidos.</li>
-							</ul>
+					<!-- Bottom Area: Ahorro -->
+					<div class="bento-item lg:col-span-12 bg-brand-dark p-8 md:p-12 rounded-2xl border border-white/5 relative overflow-hidden">
+						<div class="text-center mb-10 relative z-10">
+							<h3 class="text-xl md:text-3xl font-extrabold tracking-tight uppercase">
+								¿Mueves carga todos los días? <span class="text-brand-primary block md:inline mt-2 md:mt-0">Te ayudamos a ahorrar</span>
+							</h3>
 						</div>
-					</div>
+						
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+							<!-- Esquemas de renta -->
+							<div class="p-8 rounded-xl border border-white/10 transition-colors">
+								<h4 class="text-xl font-bold mb-4 text-white">Esquemas de renta flexibles</h4>
+								<p class="text-sm md:text-base text-white/80 mb-6 leading-relaxed">
+									Si tu operación requiere 2 o más viajes al día, te ofrecemos renta por jornada (8, 10 o 12 horas) en lugar de pagar de forma individual por cada servicio de fletes.
+								</p>
+								<ul class="space-y-4 text-sm md:text-base font-medium text-white/90">
+									<li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-primary mt-1 text-lg"></i> Tarifa menor a mayor plazo: día, semana o mes.</li>
+									<li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-primary mt-1 text-lg"></i> Descuentos por volumen de unidades en tus fletes de carga.</li>
+								</ul>
+							</div>
 
-					<div class="bento-item lg:col-span-12 glass-card p-8 md:p-12 rounded-2xl">
-						<div class="max-w-3xl mb-8">
-							<h3 class="text-2xl font-bold mb-2">Acceso y Flexibilidad de Equipos</h3>
-							<p class="text-white/90 text-sm">Disponibilidad de la unidad exacta según la especificación de tu carga industrial:</p>
-						</div>
-						<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-							<div class="p-5 bg-white/10 rounded-lg border border-white/20 hover:bg-white/20 transition-colors">
-								<span class="text-brand-primary font-bold block text-lg mb-2">Caja Seca & Plataformas</span>
-								<span class="text-sm text-white/90">Caja seca de 53’ y Plataformas (48' y 53')</span>
-							</div>
-							<div class="p-5 bg-white/10 rounded-lg border border-white/20 hover:bg-white/20 transition-colors">
-								<span class="text-brand-primary font-bold block text-lg mb-2">Unidades 3.5 & Rabones</span>
-								<span class="text-sm text-white/90">Plataforma, caja cerrada y Rabones (26')</span>
-							</div>
-							<div class="p-5 bg-white/10 rounded-lg border border-white/20 hover:bg-white/20 transition-colors">
-								<span class="text-brand-primary font-bold block text-lg mb-2">Refrigerados</span>
-								<span class="text-sm text-white/90">Unidades Refrigeradas de 53’</span>
-							</div>
-							<div class="p-5 bg-white/10 rounded-lg border border-white/20 hover:bg-white/20 transition-colors">
-								<span class="text-brand-primary font-bold block text-lg mb-2">LTL Consolidados</span>
-								<span class="text-sm text-white/90">Logística compartida eficiente</span>
+							<!-- Proyectos de ahorro -->
+							<div class="p-8 rounded-xl border border-white/10 transition-colors">
+								<h4 class="text-xl font-bold mb-4 text-white">Proyectos de ahorro a la medida</h4>
+								<p class="text-sm md:text-base text-white/80 mb-6 leading-relaxed">
+									Analizamos tu operación y diseñamos un esquema logístico que reduce directamente tu costo por servicio.
+								</p>
+								<ul class="space-y-4 text-sm md:text-base font-medium text-white/90">
+									<li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-primary mt-1 text-lg"></i> Enfocado en tus metas de ahorro anual.</li>
+									<li class="flex items-start gap-3"><i class="ph-bold ph-check text-brand-primary mt-1 text-lg"></i> Somos socios de proyecto, no solo proveedores.</li>
+								</ul>
 							</div>
 						</div>
 					</div>
